@@ -1,0 +1,324 @@
+/*
+https://invadedlands.net/threads/dyno-is-down.22447/
+*/
+
+/* null margins and padding to give good cross-browser baseline */
+html,body,address,blockquote,div,
+form,fieldset,caption,
+h1,h2,h3,h4,h5,h6,
+hr,ul,li,ol,ul,dl,dt,dd,
+table,tr,td,th,img {
+  margin:0;
+  padding:0;
+}
+
+img, fieldset {
+  border:none;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+hr {
+  display:none;
+  /*
+    HR in my code are for semantic breaks in topic/section, NOT
+    style/presenation, so hide them from screen.css users
+  */
+}
+
+@media (max-width:480px) {
+  /* Fix for pre "viewport <meta>" mobile browsers */
+  * {
+    /*
+    -webkit-text-size-adjust:none;
+    -ms-text-size-adjust:none;
+    */
+  }
+}
+
+html, body {
+  height:100%;
+}
+
+body, button, input, table, textarea, select {
+  font:normal 1em/1.42em arial,helvetica,sans-serif;
+}
+
+body {
+  display:flex;
+  flex-direction:column;
+  background:#EEE;
+}
+
+body > header,
+body > footer {
+  flex:0 0 auto;
+}
+
+main {
+  padding:1em;
+  flex:1 0 auto;
+}
+
+#top {
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  z-index:10000;
+  padding:0 1em;
+  /* background:#A00; */
+  color:#FFF;
+  box-shadow:0 0.5em 0.5em rgba(0,0,0,0.2);
+}
+
+#top a {
+  display:inline-block;
+  color:#FFF;
+}
+
+h1 {
+  order:2;
+  padding-bottom:0.5em;
+  text-align:center;
+}
+
+.userBar {
+  padding-top:0.5em;
+  order:1;
+}
+
+#mainMenu,
+.userActions {
+  list-style:none;
+  text-align:center;
+}
+
+#mainMenu {
+  order:3;
+}
+
+#mainMenu li,
+.userActions li {
+  display:inline;
+}
+
+#mainMenu a {
+  padding:0.25em 0.75em;
+  text-decoration:none;
+  border-radius:1em;
+  transition:background 0.5s;
+}
+
+#mainMenu a:focus,
+#mainMenu a:hover {
+  background:#F00;
+}
+
+#mainMenu a:before {
+  margin-right:0.4em;
+  content:"\F2BD";
+  font-family:"Font Awesome 5 Free";
+  font-weight:900;
+}
+
+#mainMenu .home a:before {
+  content:"\f015";
+}
+
+#mainMenu .logout a:before {
+  content:"\f2f5";
+}
+
+#mainMenu .login a:before {
+  content:"\f2f6";
+}
+
+#mainMenu .register a:before {
+  content:"\f25d";
+}
+
+#mainMenu .search a:before {
+  content:"\f002";
+}
+
+#mainMenu .email a:before {
+  content:"\f199";
+}
+
+#top .fileLink {
+  order:4;
+  text-align:right;
+  padding-bottom:0.5em;
+}
+
+section {
+  display: inline-block; 
+  overflow:hidden;
+  max-width:58em;
+  margin:1em auto;
+  border:1px solid #000;
+  background-color:#FFF;
+  border-radius:1em;
+  box-shadow:0 0.5em 0.5em rgba(0,0,0,0.2);
+}
+
+section h2 {
+  padding:0.4em 0.8em;
+  margin-bottom: 0.8em;
+  font-size: 1.25em;
+  background: #DDD; 
+  border-bottom: 1px solid rgba(0,0,0,0.5);
+  text-align: left;
+}
+
+section h3 {
+  font-size:1em;
+  padding:0 1em;
+}
+
+section p {
+  padding:0 1em 1em;
+}
+
+.userActions {
+  padding-bottom:1.25em;
+}
+
+.userActions a {
+  position:relative;
+  top:0;
+  display:inline-block;
+  padding:0.25em 1em;
+  margin:0 0.5em;
+  text-decoration:none;
+  border-radius:1em;
+  border:1px solid #000;
+  box-shadow:
+    inset 0 -0.5em 0.5em rgba(128,0,0,0.25),
+    0 0.25em 0.25em rgba(0,0,0,0.2);
+  color:#000;
+  transition:top 0.5s, box-shadow 0.5s;
+}
+
+.userActions a:focus,
+.userActions a:hover {
+  top:0.125em;
+  box-shadow:
+    inset 0 -0.5em 0.5em rgba(128,0,0,0.25),
+    0 0 0.125em rgba(0,0,0,0.1);
+}
+
+body > footer {
+  padding:0.5em 1em;
+  text-align:center;
+  background:#CCC;
+  border-top:1px solid rgba(0,0,0,0.5);
+}
+
+.backToTop {
+  position:fixed;
+  z-index:9999;
+  top:7.75em; right:1em;
+  text-decoration:none;
+  color:#F00;
+  perspective:10em;
+}
+
+.backToTop i {
+  vertical-align:middle;
+  margin-top:-0.1em;
+  transition:transform 0.5s;
+}
+
+.backToTop:focus i,
+.backToTop:hover i {
+  transform:scale(1.25);
+}
+
+.backToTop span {
+  /* top:-0.25em; */
+  position:absolute;
+  top: 11em; right: 100%;
+  white-space:nowrap;
+  display:inline-block;
+  padding:0.25em 0 0.25em 0.5em;
+  margin-right:1em;
+  vertical-align:middle;
+  opacity:0;
+  transform-origin:center right;
+  transform:rotateY(-90deg);
+  transition:opacity 0.5s, transform 0.5s;
+  background:#EEE;
+  border:1px solid #C55;
+  border-radius:0.5em;
+}
+
+.backToTop span:after {
+  content:"";
+  display:inline-block;
+  width:0.5em;
+  height:0.5em;
+  margin:0 -0.347em 0 0.1em;
+  background:#EEE;
+  border:1px solid;
+  border-color:#C55 #C55 transparent transparent;
+  transform:rotate(45deg);
+}
+
+.backToTop:focus span,
+.backToTop:hover span {
+  opacity:1;
+  transform:rotateY(0deg);
+}
+
+@media (max-width:62em) {
+  main {
+    padding:0 1em;
+  }
+} 
+.bug {width: 96%; margin: 0 auto; border: dotted 3px red; padding: 0em;}
+
+.bd1 {border: solid 1px #ccc;}
+.bdr {border-radius: 0.88em;}
+
+.bga {background-color: #dff;} 
+.bgc {background-color: #cfc;}
+.bgd {background-color: #dfd;} 
+.bge {background-color: #efe;} 
+.bgg {background-color: #afa;} 
+.bgl {background-color: lime;} 
+.bgn {background-color: #0A0;} 
+.bgr {background-color: #A00;}
+.bgs {background-color: #fff;}
+.bgy {background-color: #ff3;}
+.btn {padding: 0.12em 0.42em;}
+.clb {clear: both;}
+.dib {display: inline-block;}
+.fgb {color: blue;}
+.fgr {color: red;} .fgl {color: lime;} .fgs {color: #fff;} 
+.fsl {font-size: large;} .fss {font-size: small;}
+.fll {float: left;} .flr {float: right;}
+.ftr {position: fixed; left: 0; bottom: 0;}
+.fwb {font-weight: 700;}
+.hg4 {height: 4em;}
+.hhh {display:none;}
+.mga {margin: 0 auto;}
+.ooo {border:0; padding: 0; margin: 0; height: 0;}
+.oo1 {height: 2px; background-color: #ddd;}
+.p02 th,
+.p02 td {padding: 0.1em 1em 1em 0.42em;}
+.p42 {padding: 0.42em;}
+.tac {text-align: center;} .tal {text-align: left;}
+.tar {text-align: right;}
+.tdn {text-decoration: none;}
+.w55 {width: 55%;} .w88 {width: 88%;} .w99 {width: 100%;}
+.mg6 {margin-left: 4em;}
+label {display: inline-block; width: 6em;}   
+
+.w96 input,
+.w96 textarea {margin-left: 2%; width: 96%;}
+.w96 textarea {min-height: 6em; }
+.groupby th,
+.groupby td {padding: 0.42em 1.42em;}

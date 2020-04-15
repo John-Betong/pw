@@ -1,0 +1,38 @@
+# this-is-a-test-to-see-if-it-works.tk
+# 2020-03-27
+
+# ABSOLUTELY ESSENTIAL TO OPEN CSV SOURCE CHART FILE
+  Options +Indexes +FollowSymlinks
+  Require all granted
+
+# REWRITE STUFF     
+  RewriteEngine On
+
+# <IfModule mod_rewrite.c>
+
+  # FORCE NON-WWW
+    RewriteCond %{HTTP_HOST} ^www.this-is-a-test-to-see-if-it-works.tk [NC]
+    RewriteRule ^(.*)$ https://this-is-a-test-to-see-if-it-works.tk/$1 [L,R=302]
+
+ <IfModule DISABLE_LOAD.c>
+  # Force www:
+    RewriteCond %{HTTP_HOST} ^this-is-a-test-to-see-if-it-works.tk [NC]
+    RewriteRule ^(.*)$ http://www.this-is-a-test-to-see-if-it-works.tk/$1 [L,R=301,NC]
+
+  # FORCE PRETTY-URLs  
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [L]
+    # RewriteRule ^$ index.php/$1 [L]
+</IfModule>  
+
+# </IfModule>  
+
+ErrorDocument 404 https://this-is-a-test-to-see-if-it-works.tk/pw/
+
+#####
+# ErrorDocument 404 "Whoops! We can't find that bl@@dy file. Sorry. \n <a href='https://this-is-a-test-to-see-if-it-works.tk/pw/'>Please try again </a>"
+# index.html
+####
+
+# SetEnv CI_ENVIRONMENT development
